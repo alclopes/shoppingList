@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Checkbox from '../../shared/Checkbox'
 import LineChart from '../../shared/LineChart'
 import AppContainer from '../AppContainer/AppContainer'
 import AppHeader from '../AppHeader'
+import ShoppingList from '../ShoppingList'
 import { Wrapper, Container } from './App.styles'
 
 function App() {
-  const [lettuce, setLettuce] = useState(true)
-  const [rice, setRice] = useState(false)
   const [healthy, setHealthy] = useState(20)
 
   const colors = ['#62CBC6', '#00ABAD', '#00858C', '#006073', '#004D61']
@@ -23,31 +21,8 @@ function App() {
       <Container>
         <AppHeader />
         <AppContainer
-          left={
-            <div>
-              produtos disponíveis:
-              <Checkbox
-                value={lettuce}
-                title='Lettuce'
-                onClick={() => setLettuce(!lettuce)}
-              />
-              <Checkbox
-                value={rice}
-                title='Rice'
-                onClick={() => setRice(!rice)}
-              />
-            </div>
-          }
-          middle={
-            <div>
-              sua lista de compras
-              <Checkbox
-                value={rice}
-                title='Arroz'
-                onClick={() => setRice(!rice)}
-              />
-            </div>
-          }
+          left={<ShoppingList title='Lista de Produtos' />}
+          middle={<ShoppingList title='Sua Lista de Compras' />}
           right={
             <div>
               estatísticas
