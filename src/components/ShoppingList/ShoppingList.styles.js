@@ -11,7 +11,7 @@ export const Title = styled.h2`
 `
 
 export const Array = styled.div`
-  border: 2px solid #0046d1;
+  //border: 2px solid #0046d1;
   height: 424px;
   overflow-y: auto;
 `
