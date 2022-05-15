@@ -20,6 +20,7 @@ function App() {
   const colors = ['#62CBC6', '#00ABAD', '#00858C', '#006073', '#004D61']
 
   const products = useSelector(selectAllProducts)
+
   const selectedProducts = useSelector(selectSelectedProducts)
   const totalPrice = useSelector(selectSelectedProductTotalPrice)
 
@@ -33,16 +34,12 @@ function App() {
         <AppHeader />
         <AppContainer
           left={
-            <ShoppingList
-              title='Lista de Produtos'
-              products={products}
-              onToggle={handleToggle}
-            />
+            <ShoppingList title='Lista de Produtos' onToggle={handleToggle} />
           }
           middle={
             <ShoppingList
               title='Sua Lista de Compras'
-              products={selectedProducts}
+              displayOnlySelected
               onToggle={handleToggle}
             />
           }
