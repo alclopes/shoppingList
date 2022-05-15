@@ -10,7 +10,9 @@ import extractPercentage from '../../utils/extractPercentage'
 import {
   selectAllProducts,
   selectSelectedProducts,
+  selectSelectedProductTotalPrice,
 } from '../../store/Products/Products.selectors'
+
 import { toggleProduct } from '../../store/Products/Products.actions'
 
 function App() {
@@ -19,16 +21,7 @@ function App() {
 
   const products = useSelector(selectAllProducts)
   const selectedProducts = useSelector(selectSelectedProducts)
-
-  const [totalPrice, setTotalPrice] = useState(0)
-
-  useEffect(() => {
-    const total = selectedProducts
-      .map((product) => product.price)
-      .reduce((a, b) => a + b, 0)
-
-    setTotalPrice(total)
-  }, [selectedProducts])
+  const totalPrice = useSelector(selectSelectedProductTotalPrice)
 
   function handleToggle(id) {
     dispatch(toggleProduct(id))
@@ -58,7 +51,7 @@ function App() {
               estatísticas
               <LineChart
                 color={colors[0]}
-                title='saudavel'
+                title='saudável'
                 percentage={extractPercentage(
                   selectedProducts.length,
                   selectedProducts.filter((product) =>
