@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import {
   selectAllProducts,
   selectSelectedProducts,
-} from '../../store/Products/Products.selectors'
+} from '../../features/products/products.selectors'
 
 function ShoppingList({ title, onToggle, displayOnlySelected }) {
   const products = useSelector(

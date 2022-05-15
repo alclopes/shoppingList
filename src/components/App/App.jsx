@@ -10,9 +10,9 @@ import extractPercentage from '../../utils/extractPercentage'
 import {
   selectSelectedProducts,
   selectSelectedProductTotalPrice,
-} from '../../store/Products/Products.selectors'
+} from '../../features/products/products.selectors'
 
-import { toggleProduct } from '../../store/Products/Products.actions'
+import { toggleProduct } from '../../features/products/products.slice'
 
 function App() {
   const dispatch = useDispatch()
