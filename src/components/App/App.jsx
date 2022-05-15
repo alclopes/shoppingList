@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import LineChart from '../../shared/LineChart'
-import AppContainer from '../AppContainer/AppContainer'
+import AppContainer from '../AppContainer'
 import AppHeader from '../AppHeader'
 import ShoppingList from '../ShoppingList'
 import { Wrapper, Container } from './App.styles'
-import productsMock from '../../mocks/products.json'
 import extractPercentage from '../../utils/extractPercentage'
 
+import { selectAllProducts } from '../../store/Products/Products.selectors'
+import { toggleProduct } from '../../store/Products/Products.actions'
+
 function App() {
+  const dispatch = useDispatch()
   const colors = ['#62CBC6', '#00ABAD', '#00858C', '#006073', '#004D61']
 
-  const [products, setProducts] = useState(productsMock.products)
+  const products = useSelector(selectAllProducts)
+
   const [selectedProducts, setSelectedProducts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
 
@@ -28,11 +33,8 @@ function App() {
     setTotalPrice(total)
   }, [selectedProducts])
 
-  function handleToggle(id, checked, name) {
-    const newProducts = products.map((product) =>
-      product.id === id ? { ...product, checked: !product.checked } : product
-    )
-    setProducts(newProducts)
+  function handleToggle(id) {
+    dispatch(toggleProduct(id))
   }
 
   return (
