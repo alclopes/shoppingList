@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import LineChart from '../../shared/LineChart'
 import AppContainer from '../AppContainer'
@@ -8,7 +8,6 @@ import { Wrapper, Container } from './App.styles'
 import extractPercentage from '../../utils/extractPercentage'
 
 import {
-  selectAllProducts,
   selectSelectedProducts,
   selectSelectedProductTotalPrice,
 } from '../../store/Products/Products.selectors'
@@ -18,8 +17,6 @@ import { toggleProduct } from '../../store/Products/Products.actions'
 function App() {
   const dispatch = useDispatch()
   const colors = ['#62CBC6', '#00ABAD', '#00858C', '#006073', '#004D61']
-
-  const products = useSelector(selectAllProducts)
 
   const selectedProducts = useSelector(selectSelectedProducts)
   const totalPrice = useSelector(selectSelectedProductTotalPrice)
