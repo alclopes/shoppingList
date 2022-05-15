@@ -7,7 +7,10 @@ import ShoppingList from '../ShoppingList'
 import { Wrapper, Container } from './App.styles'
 import extractPercentage from '../../utils/extractPercentage'
 
-import { selectAllProducts } from '../../store/Products/Products.selectors'
+import {
+  selectAllProducts,
+  selectSelectedProducts,
+} from '../../store/Products/Products.selectors'
 import { toggleProduct } from '../../store/Products/Products.actions'
 
 function App() {
@@ -15,15 +18,9 @@ function App() {
   const colors = ['#62CBC6', '#00ABAD', '#00858C', '#006073', '#004D61']
 
   const products = useSelector(selectAllProducts)
+  const selectedProducts = useSelector(selectSelectedProducts)
 
-  const [selectedProducts, setSelectedProducts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
-
-  useEffect(() => {
-    const newSelectedProducts = products.filter((product) => product.checked)
-
-    setSelectedProducts(newSelectedProducts)
-  }, [products])
 
   useEffect(() => {
     const total = selectedProducts
