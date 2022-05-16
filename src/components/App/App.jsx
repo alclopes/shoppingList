@@ -4,8 +4,8 @@ import AppContainer from '../AppContainer'
 import AppHeader from '../AppHeader'
 import ShoppingList from '../ShoppingList'
 import Statistics from '../Statistics'
-import { Wrapper, Container } from './App.styles'
-
+import Button from '../../shared/Button'
+import { Wrapper, Container, WrapperButtons } from './App.styles'
 import { toggleProduct } from '../../features/products/products.slice'
 
 function App() {
@@ -13,6 +13,14 @@ function App() {
 
   function handleToggle(id) {
     dispatch(toggleProduct(id))
+  }
+
+  function handleReset() {
+    alert('Todo: Reset')
+  }
+
+  function handlePrint() {
+    alert('Todo: Print')
   }
 
   return (
@@ -30,7 +38,15 @@ function App() {
               onToggle={handleToggle}
             />
           }
-          right={<Statistics />}
+          right={
+            <>
+              <Statistics />
+              <WrapperButtons>
+                <Button title='Reset' onClick={handleReset} color='#8257E5' />
+                <Button title='Print' onClick={handlePrint} color='#71C23D' />
+              </WrapperButtons>
+            </>
+          }
         />
       </Container>
     </Wrapper>
