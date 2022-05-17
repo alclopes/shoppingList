@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 `
 export const WrapperButtons = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-content: left;
   align-items: center;
   margin-top: 1em;

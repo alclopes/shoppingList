@@ -42,8 +42,8 @@ function App() {
             <>
               <Statistics />
               <WrapperButtons>
-                <Button title='Reset' onClick={handleReset} color='#8257E5' />
-                <Button title='Print' onClick={handlePrint} color='#71C23D' />
+                <Button title='Reset' onClick={handleReset} color='#4D3E55' />
+                <Button title='Print' onClick={handlePrint} color='#225E22' />
               </WrapperButtons>
             </>
           }
