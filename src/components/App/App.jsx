@@ -1,3 +1,5 @@
+// app confirmando reset usando react-confirm-alert
+
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import AppContainer from '../AppContainer'
@@ -6,7 +8,10 @@ import ShoppingList from '../ShoppingList'
 import Statistics from '../Statistics'
 import Button from '../../shared/Button'
 import { Wrapper, Container, WrapperButtons } from './App.styles'
-import { toggleProduct } from '../../features/products/products.slice'
+import {
+  toggleProduct,
+  resetShop,
+} from '../../features/products/products.slice'
 
 function App() {
   const dispatch = useDispatch()
@@ -16,7 +21,7 @@ function App() {
   }
 
   function handleReset() {
-    alert('Todo: Reset')
+    dispatch(resetShop())
   }
 
   function handlePrint() {

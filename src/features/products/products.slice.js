@@ -15,9 +15,12 @@ export const productSlice = createSlice({
           : product
       )
     },
+    resetShop: (state) => {
+      return (state = initialState)
+    },
   },
 })
 
-export const { toggleProduct } = productSlice.actions
+export const { toggleProduct, resetShop } = productSlice.actions
 
 export default productSlice.reducer
