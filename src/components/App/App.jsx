@@ -1,6 +1,5 @@
-// app confirmando reset usando react-confirm-alert
-
-import React from 'react'
+import React, { useRef } from 'react'
+import ReactToPrint from 'react-to-print'
 import { useDispatch } from 'react-redux'
 import AppContainer from '../AppContainer'
 import AppHeader from '../AppHeader'
@@ -14,6 +13,7 @@ import {
 } from '../../features/products/products.slice'
 
 function App() {
+  const componentRef = useRef(null)
   const dispatch = useDispatch()
 
   function handleToggle(id) {
@@ -22,10 +22,6 @@ function App() {
 
   function handleReset() {
     dispatch(resetShop())
-  }
-
-  function handlePrint() {
-    alert('Todo: Print')
   }
 
   return (
@@ -41,6 +37,7 @@ function App() {
               title='Sua Lista de Compras'
               displayOnlySelected
               onToggle={handleToggle}
+              ref={componentRef}
             />
           }
           right={
@@ -48,7 +45,14 @@ function App() {
               <Statistics />
               <WrapperButtons>
                 <Button title='Reset' onClick={handleReset} color='#4D3E55' />
-                <Button title='Print' onClick={handlePrint} color='#225E22' />
+
+                <ReactToPrint
+                  trigger={() => (
+                    <Button title='Print' onClick={() => {}} color='#225E22' />
+                  )}
+                  content={() => componentRef.current}
+                  documentTitle={'My Shopping List'}
+                />
               </WrapperButtons>
             </>
           }
