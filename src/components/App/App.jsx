@@ -24,6 +24,10 @@ function App() {
     dispatch(resetShop())
   }
 
+  function handlePdf() {
+    alert('Todo: Pdf')
+  }
+
   return (
     <Wrapper>
       <Container>
@@ -44,7 +48,7 @@ function App() {
             <>
               <Statistics />
               <WrapperButtons>
-                <Button title='Reset' onClick={handleReset} color='#4D3E55' />
+                <Button title='Reset' onClick={handleReset} color='#900C3F' />
 
                 <ReactToPrint
                   trigger={() => (
@@ -53,6 +57,7 @@ function App() {
                   content={() => componentRef.current}
                   documentTitle={'My Shopping List'}
                 />
+                <Button title='PDF' onClick={handlePdf} color='#4D3E55' />
               </WrapperButtons>
             </>
           }

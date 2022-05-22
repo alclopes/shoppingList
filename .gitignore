@@ -4,7 +4,9 @@
 .pnp.js
 
 # development
-trash*.jsx
+*trash_*.jsx
+readme.md
+projeto.md
 
 # testing
 /coverage
