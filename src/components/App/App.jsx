@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import ReactToPrint from 'react-to-print'
+import jsPDF from 'jspdf'
 import { useDispatch } from 'react-redux'
 import AppContainer from '../AppContainer'
 import AppHeader from '../AppHeader'
@@ -25,7 +26,13 @@ function App() {
   }
 
   function handlePdf() {
-    alert('Todo: Pdf')
+    let pdf = new jsPDF('', 'px', 'a4', 'false')
+    pdf.html(componentRef.current, {
+      callback: () => {
+        pdf.save('My Shopping List')
+      },
+      margin: [0, 5, 5, 5],
+    })
   }
 
   return (
